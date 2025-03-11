@@ -5,10 +5,6 @@ export function EditMode(): React.JSX.Element {
     const [isEditMode, setEditMode] = useState(false);
     const [name, setName] = useState("Your Name");
     const [isStudent, setStudent] = useState(false);
-    if (name === "Bob") {
-        setName("Your Name");
-        setStudent(false);
-    }
     function updateName(event: React.ChangeEvent<HTMLInputElement>) {
         setName(event.target.value);
     }
