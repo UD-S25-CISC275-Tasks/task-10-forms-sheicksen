@@ -1,21 +1,17 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 export function CheckAnswer({
     expectedAnswer,
 }: {
     expectedAnswer: string;
 }): React.JSX.Element {
-    const [answer, setAnswer] = useState("");
-    const [isCorrect, setCorrect] = useState("");
-    function updateAnswer(e: React.ChangeEvent<HTMLInputElement>) {
-        setAnswer(e.target.value);
-    }
-    function submit() {
-        if (answer === expectedAnswer) {
-            setCorrect("✔️");
+    const [isCorrect, setCorrect] = useState(false);
+    function checkAnswer(e: React.ChangeEvent<HTMLInputElement>) {
+        if (e.target.value === expectedAnswer) {
+            setCorrect(true);
         } else {
-            setCorrect("❌");
+            setCorrect(false);
         }
     }
     return (
@@ -23,10 +19,9 @@ export function CheckAnswer({
             <h3>Check Answer</h3>
             <Form.Group>
                 <Form.Label>Input Answer: </Form.Label>
-                <Form.Control onChange={updateAnswer}></Form.Control>
-                <Button onClick={submit}>Check Answer</Button>
+                <Form.Control onChange={checkAnswer}></Form.Control>
             </Form.Group>
-            {isCorrect}
+            {isCorrect ? "✔️" : "❌"}
         </div>
     );
 }
