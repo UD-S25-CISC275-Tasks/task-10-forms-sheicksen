@@ -12,6 +12,7 @@ export function EditMode(): React.JSX.Element {
         <div>
             <h3>Edit Mode</h3>
             <Form.Check
+                inline
                 type="switch"
                 id="edit-mode"
                 label="Enable Edit Mode"
@@ -40,6 +41,7 @@ export function EditMode(): React.JSX.Element {
                     ></Form.Check>
                 </Form.Group>
             )}
+            <br></br>
             {name} is {isStudent ? "" : "not"} a student.
         </div>
     );
